@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang ="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Equipo</title>
+        <style>
+            body{
+                margin: 0;
+            }
+            .split-container {
+                display: flex;
+                width: 100%;
+                height: 100vh;
+            }
+
+            .panel {
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .left-side {
+                width: 30%;
+                background-color: red;
+            }
+
+            .right-side {
+                width: 70%;
+                background-color: blue;
+                justify-items: center;
+
+            }
+            .search{
+                width: 75%;
+                justify-content: center;
+                align-items: center;
+                margin: 20px 0px;
+            }
+            .bar{
+                height: 50px;
+                display:flex;
+                align-items: stretch;
+                justify-content: center;
+            }
+            input[type="text"]{
+                flex:1;
+                font-size: 18px;
+                padding: 5px;
+            }
+            .resultBox{
+                flex: 1;
+                justify-content: center;
+                max-height: 40%;
+            }
+            .resultBox ul{
+                justify-content: center;
+                padding: 0px;
+                background-color: aliceblue;
+                margin: 0px;
+                align-items: center;
+                
+            }
+            .resultBox ul li{
+                padding: 10px;
+                justify-content: center;
+                list-style: none;
+                cursor: pointer;
+                text-align: center;
+            }
+            .resultBox ul li:hover{
+                background-color: #ddf;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="split-container">
+    
+            <div class="panel left-side">
+                <h2>Left Section</h2>
+                <p>placeholder.</p>
+            </div>
+
+            <div class="panel right-side">
+                <div class="search">
+                    <div class="bar">
+                        <input type="text" id="inputBox" placeholder="Selecciona al pokémon" autocomplete="off">
+                        <button>Search</button>
+                    </div>
+                    <div class="resultBox"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="busqueda.js"></script>
+        <script type="text/javascript" src="prueba.js"></script>
+
+    </body>
+</html>
