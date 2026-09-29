@@ -12,8 +12,6 @@ async function start() {
             results = pokemons.filter((keyword)=>{
                 return keyword.toLowerCase().includes(input.toLowerCase());
             });
-
-            console.log(results);
         }
 
         show(results);
@@ -29,10 +27,28 @@ async function start() {
     
 }
 
-function selectInput(list){
+async function selectInput(list){
     inputBox.value = list.innerHTML;
     resultBox.innerHTML = '';
+    let nombre = list.innerText.toLowerCase();
+
+    const url = "https://pokeapi.co/api/v2/pokemon/" + nombre.toLowerCase(); 
+    
+    try { 
+        const response = await fetch(url); 
+        
+        if (!response.ok) { 
+            throw new Error("No se pudo obtener el Pokémon"); 
+        } 
+        
+        const pokemon = await response.json(); 
+        
+        colocarPokemon(pokemon); 
+    } catch (error) { 
+        console.error(error); 
+    } 
 }
+
 
 
 async function getData() {
