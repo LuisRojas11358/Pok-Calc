@@ -12,8 +12,11 @@ async function start() {
             results = pokemons.filter((keyword)=>{
                 return keyword.toLowerCase().includes(input.toLowerCase());
             });
+            console.log(results);
         }
-
+        resultBox.style.width = `${inputBox.offsetWidth}px`;
+        addEventListener("resize", () => resultBox.style.width = `${inputBox.offsetWidth}px`);
+        
         show(results);
     }
 
@@ -44,6 +47,8 @@ async function selectInput(list){
         const pokemon = await response.json(); 
         
         colocarPokemon(pokemon); 
+
+        inputBox.value='';
     } catch (error) { 
         console.error(error); 
     } 

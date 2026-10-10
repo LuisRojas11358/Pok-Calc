@@ -10,7 +10,6 @@ function crearEspacio() {
     }
 
     
-    
     const espacio = document.createElement("div");
 
     espacio.classList.add("pokemon-slot");
@@ -41,11 +40,22 @@ async function colocarPokemon(pokemon) {
     const estabaVacio = !espacioSeleccionado.dataset.ocupado;
     espacioSeleccionado.dataset.ocupado = "true";
 
+    espacioSeleccionado.dataset.num = cantidadPokemon;
+
     espacioSeleccionado.innerHTML = '<img src="' + pokemon.sprites.front_default + '" alt="' + pokemon.name + '">';
+
+    mostrarEstadisticas(pokemon);
+
+    espacioSeleccionado.addEventListener("click", () => mostrarEstadisticas(pokemon));
 
     if (estabaVacio){
         crearEspacio();
     } 
+}
+
+function borrarpokemon(){
+    let espacioLibre = team.getElementsByClassName("pokemon-slot");
+    espacioLibre.item
 }
 
 crearEspacio();
