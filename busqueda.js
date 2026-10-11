@@ -10,7 +10,7 @@ async function start() {
 
         if(input.length){
             results = pokemons.filter((keyword)=>{
-                return keyword.toLowerCase().includes(input.toLowerCase());
+                return keyword[0].toLowerCase().includes(input.toLowerCase());
             });
             console.log(results);
         }
@@ -22,7 +22,8 @@ async function start() {
 
     function show(result){
         const content = result.map((list) => {
-            return "<li onclick=\"selectInput(this)\">" + list.charAt().toUpperCase() + list.slice(1) + "</li>";
+            console.log(list)
+            return "<li onclick=\"selectInput(this)\" data-pkdx=" + list[1] + " >" + list[0].charAt(0).toUpperCase() + list[0].slice(1) + "</li>";
         });
 
         resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
@@ -31,11 +32,8 @@ async function start() {
 }
 
 async function selectInput(list){
-    inputBox.value = list.innerHTML;
-    resultBox.innerHTML = '';
-    let nombre = list.innerText.toLowerCase();
 
-    const url = "https://pokeapi.co/api/v2/pokemon/" + nombre.toLowerCase(); 
+    const url = "https://pokeapi.co/api/v2/pokemon/" + list.dataset.pkdx; 
     
     try { 
         const response = await fetch(url); 
@@ -70,13 +68,13 @@ async function getData() {
         const result = await response.json();
 
         source = result.pokemon_entries.map((pokemon) => {
-            return pokemon.pokemon_species.name;
+            return [pokemon.pokemon_species.name, pokemon.entry_number];
         });
 
     } catch (error) {
         console.error(error.message);
     }
-
+    console.log(source);
     return source;
 }
 
