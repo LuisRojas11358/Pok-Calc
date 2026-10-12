@@ -1,5 +1,12 @@
+var equipo = [
+    [],
+    
+]
+
 function mostrarEstadisticas(pokemon) {
     const statsBox = document.getElementById("statsBox");
+
+    localStorage.setItem('pokemon', JSON.stringify(pokemon))
 
     nombrePokemon = pokemon.name;
 

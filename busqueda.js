@@ -1,29 +1,29 @@
 const resultBox = document.querySelector(".resultBox");
 const inputBox = document.getElementById("inputBox");
     
-async function start() {
-    let pokemons = await getData();
+function search(pokemons, box, result) {
 
-    inputBox.onkeyup = function(){
+    box.onkeyup = function(){
         let results = [];
-        let input = inputBox.value;
+        let input = box.value;
 
         if(input.length){
             results = pokemons.filter((keyword)=>{
                 return keyword[0].toLowerCase().includes(input.toLowerCase());
             });
-            console.log(results);
+            //console.log(results);
         }
-        resultBox.style.width = `${inputBox.offsetWidth}px`;
-        addEventListener("resize", () => resultBox.style.width = `${inputBox.offsetWidth}px`);
+        resultBox.style.width = `${box.offsetWidth}px`;
+        addEventListener("resize", () => result.style.width = `${box.offsetWidth}px`);
         
         show(results);
     }
 
     function show(result){
         const content = result.map((list) => {
-            console.log(list)
-            return "<li onclick=\"selectInput(this)\" data-pkdx=" + list[1] + " >" + list[0].charAt(0).toUpperCase() + list[0].slice(1) + "</li>";
+            let img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + list[1] + ".png"
+
+            return "<li onclick=\"selectInput(this)\" data-pkdx=" + list[1] + " >" + "<img alt= \"" + list[0] + "\" src= " + img + ">" + list[0].charAt(0).toUpperCase() + list[0].slice(1) + "</li>";
         });
 
         resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
@@ -74,8 +74,13 @@ async function getData() {
     } catch (error) {
         console.error(error.message);
     }
-    console.log(source);
+    //console.log(source);
     return source;
 }
 
-start();
+async function searchPromises(promise, box){
+    let array = await promise;
+    search(array, box);
+
+}
+searchPromises(getData(), inputBox, resultBox);

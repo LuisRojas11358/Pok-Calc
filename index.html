@@ -2,149 +2,18 @@
 <html lang ="es">
     <head>
         <meta charset="UTF-8">
-        <title>Equipo</title>
-        <style>
-            body{
-                color: white;
-                margin: 0;
-            }
-            .split-container {
-                display: flex;
-                width: 100%;
-                height: 100vh;
-            }
-
-            .panel {
-                padding: 20px;
-                box-sizing: border-box;
-            }
-
-            .left-side {
-                width: 30%;
-                background-color: red;
-            }
-
-            .right-side {
-                width: 70%;
-                background-color: blue;
-                justify-items: center;
-
-            }
-            .left-side h2{
-                justify-self: center;
-            }
-            .search{
-                color: black;
-                width: 75%;
-                justify-content: center;
-                align-items: center;
-                margin: 20px 0px;
-            }
-            .bar{
-                height: 50px;
-                display:flex;
-                align-items: stretch;
-                justify-content: center;
-            }
-            input[type="text"]{
-                flex:1;
-                font-size: 18px;
-                padding: 5px;
-            }
-            .resultBox{
-                position:absolute;
-                justify-content: center;
-                max-height: 200px;
-            }
-            .resultBox ul{
-                justify-content: center;
-                padding: 0px;
-                background-color: aliceblue;
-                margin: 0px;
-                align-items: center;
-                
-            }
-            .resultBox ul li{
-                padding: 10px;
-                justify-content: center;
-                list-style: none;
-                cursor: pointer;
-                text-align: center;
-            }
-            .resultBox ul li:hover{
-                background-color: #ddf;
-            }
-            .statsBox {
-                padding: 15px;
-                border-radius: 8px;
-                width: 75%;
-                margin-top: 20px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            }
-
-            .statsBox h3 {
-                margin-top: 0;
-                text-align: center;
-            }
-            .statsBox:empty { display: none; }
-
-            .stat-row {
-                display: flex;
-                justify-content: space-between;
-                padding: 4px 0;
-                border-bottom: 1px solid #ddd;
-            }
-            .team{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                height: 80%;
-            }
-            .pokemon-slot{
-                margin: 10px;
-                height: 120px;
-                width: 120px;
-                border: 2px #ddd ;
-                justify-self: center;
-                display: flex;
-                justify-content: center; 
-                align-items: center; 
-                border: 1px solid black;
-                font-size: 50px;
-            }
-            .pokemon-slot img{
-                object-fit: cover;
-            }
-            .pokemon-slot:hover{
-                cursor: pointer; 
-            }
-        </style>
+        <title>PokéCalc</title>
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="split-container">
-    
-            <div class="panel left-side">
-                <h2>Equipo</h2>
-                        
-                <div class="team" id="team"></div>
-            </div>
-
-            <div class="panel right-side">
-                <div class="search">
-                    <div class="bar">
-                        <input type="text" id="inputBox" placeholder="Selecciona al pokémon" autocomplete="off">
-                        <button>Search</button>
-                    </div>
-                    <div class="resultBox"></div>
-                </div>
-                <div id="statsBox" class="statsBox"></div>
-            </div>
-
-        </div>
-        
-        <script type="text/javascript" src="pkmn.js"></script>
-        <script type="text/javascript" src="equipo.js"></script>
-        <script type="text/javascript" src="busqueda.js"></script>
-        
+    <header class="header">
+          <h1 class="logo">PokéCalc</h1>
+          <nav class="nav">
+            <a>Inicio</a>
+            <a href="teammaker.html">Equipo</a>
+            <a>Calcular</a>
+          </nav>
+        </header>
 
     </body>
 </html>
