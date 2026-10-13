@@ -1,20 +1,21 @@
 const resultBox = document.querySelector(".resultBox");
 const inputBox = document.getElementById("inputBox");
     
-function search(pokemons, box, result) {
+async function searchPkmn() {
+    let pokemons = await getData();
 
-    box.onkeyup = function(){
+    inputBox.onkeyup = function(){
         let results = [];
-        let input = box.value;
+        let input = inputBox.value;
 
         if(input.length){
             results = pokemons.filter((keyword)=>{
                 return keyword[0].toLowerCase().includes(input.toLowerCase());
             });
-            //console.log(results);
+            console.log(results);
         }
-        resultBox.style.width = `${box.offsetWidth}px`;
-        addEventListener("resize", () => result.style.width = `${box.offsetWidth}px`);
+        resultBox.style.width = `${inputBox.offsetWidth}px`;
+        addEventListener("resize", () => resultBox.style.width = `${inputBox.offsetWidth}px`);
         
         show(results);
     }
@@ -78,9 +79,5 @@ async function getData() {
     return source;
 }
 
-async function searchPromises(promise, box){
-    let array = await promise;
-    search(array, box);
 
-}
-searchPromises(getData(), inputBox, resultBox);
+searchPkmn();

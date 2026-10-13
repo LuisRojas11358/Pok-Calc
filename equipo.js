@@ -16,7 +16,6 @@ function crearEspacio() {
     espacio.textContent = "+";
 
     espacio.addEventListener("click", function() {
-        console.log("jioeof");
         espacioSeleccionado = espacio;
         inputBox.focus();
     });

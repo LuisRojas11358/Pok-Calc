@@ -7,6 +7,15 @@
         <link rel="stylesheet" href="css/teammaker.css">
     </head>
     <body>
+        <header class="header">
+          <h1 class="logo">PokéCalc</h1>
+          <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="team.html">Equipo</a>
+            <a>Calcular</a>
+          </nav>
+        </header>
+
         <div class="split-container">
     
             <div class="panel left-side">
@@ -31,7 +40,20 @@
         <script type="text/javascript" src="pkmn.js"></script>
         <script type="text/javascript" src="equipo.js"></script>
         <script type="text/javascript" src="busqueda.js"></script>
-        
+<script>
+// Select all the elements you want to be selectable
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach(box => {
+  box.addEventListener('click', () => {
+    // 1. Remove the 'active' class from whichever element currently has it
+    document.querySelector('.box.active')?.classList.remove('active');
+    
+    // 2. Add the 'active' class to the element that was just clicked
+    box.classList.add('active');
+  });
+});
+</script>
 
     </body>
 </html>
